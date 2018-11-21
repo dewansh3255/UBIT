@@ -1,16 +1,32 @@
 # UBIT
+---
 A Universal Bio-Informatics Tool for solving totally everyday problems.
 
+## Goals
+---
+[x] Perform Global Alignment
+[x] Perform Local Alignment
+[x] Transcribe complementary DNA
+[x] Transcribe mRNA sequence from complementary DNA
+[x] Finally generate the Protein Sequence
+[x] Calculate the Hamming Distance
+[ ] Devise the possible k-mers from the given DNA Sequence
+[x] % Mass composition of nucleotides in DNA
+[x] % Mass composition of Amino Acid in generated Protein Sequence
+[ ] Create a Neural Network to compare and the closest matching Protein Sequence with existing database
+[ ] All the above presented in Enhanced Graphical Interface
 
-Perform Global Alignment<br />
-Perform Local Alignment<br />
-Transcribe complementary DNA<br />
-Transcribe mRNA sequence from complementary DNA<br />
-Finally generate the Protein Sequence <br />
-Calculate the Hamming Distance<br />
-X Devise the possible k-mers from the given DNA Sequence<br />
-% Mass composition of nucleotides in DNA<br />
-% Mass composition of Amino Acid in generated Protein Sequence <br />
-X Create a Neural Network to compare and the closest matching Protein Sequence with existing database<br />
-Data Base from PDBftp://ftp.wwpdb.org/pub/pdb/derived_data/pdb_seqres.txt<br />
-X All the above presented in Enhanced Graphical Interface<br />
+## Contributors
+---
+- Masood Ahmed
+- Mohsin Ali Shaikh
+- Muhammad Bilal Akmal
+- Muhammad Abu Bakr
+- Wajeeh Misbah Khan
+
+## Special Thanks
+---
+- Sir Rafi (for not kicking us out of his class)
+- Miss Nida (for accepting our proposal regardless of its humor)
+- Sir Teerath Das (for leaving)
+- [Data Base from PDB](ftp://ftp.wwpdb.org/pub/pdb/derived_data/pdb_seqres.txt)
