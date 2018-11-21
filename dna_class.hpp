@@ -230,3 +230,5 @@ int hamming(DNA const &dna_1, DNA const &dna_2){
 	}
 	return distance;
 }
+
+/*Copyrights reserved*/
