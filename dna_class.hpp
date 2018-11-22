@@ -17,10 +17,10 @@ class DNA{
 		void translate();
 		
 		string dna_string;
-		string rna_string;
+		string rna_string;					//mRNA, transcribed from DNA
 		string reverse_complement_string;
-		string protein_sequence;
-		int a,c,g,t;
+		string protein_sequence;			//translated from mRNA
+		int a,c,g,t;						//individual counts of each base
 };
 
 DNA::DNA(string dna_string){
@@ -45,10 +45,10 @@ void DNA::count(){
 //Transcribe DNA into mRNA
 void DNA::transcribe(){
 	for(int i=0;i<dna_string.length();i++){
-		if(dna_string[i]=='A')		dna_string[i]='U';
-		else if(dna_string[i]=='C')	dna_string[i]='G';
-		else if(dna_string[i]=='G')	dna_string[i]='C';
-		else if(dna_string[i]=='T')	dna_string[i]='A';
+		if(dna_string[i]=='A')		rna_string[i]='U';
+		else if(dna_string[i]=='C')	rna_string[i]='G';
+		else if(dna_string[i]=='G')	rna_string[i]='C';
+		else if(dna_string[i]=='T')	rna_string[i]='A';
 	}
 }
 
@@ -73,14 +73,17 @@ long double DNA::gc_content(){
 
 //mRNA to Protein translation
 void DNA::translate(){
-	bool stop = false;	string rna;
+	bool stop = false;	string codon;
 	for(int i=0;i<rna_string.length() && !stop;i+=3){
-		rna= rna_string.substr(i,3);
-		switch(rna[0]){
+		codon = rna_string.substr(i,3);
+		//codon is matched by an anticodon tuple from tRNA,
+		//which contains a specific protein sequence at 
+		//the other end and goes out-of-scope after generating it
+		switch(codon[0]){
 			case 'U':
-				switch(rna[1]){
+				switch(codon[1]){
 					case 'U':
-						switch(rna[2]){
+						switch(codon[2]){
 							case 'U':
 							case 'C':
 								protein_sequence+="F";
@@ -95,7 +98,7 @@ void DNA::translate(){
 						protein_sequence+="S";
 						break;
 					case 'A':
-						switch(rna[2]){
+						switch(codon[2]){
 							case 'U':
 							case 'C':
 								protein_sequence+="Y";
@@ -107,7 +110,7 @@ void DNA::translate(){
 						}
 						break;
 					case 'G':
-						switch(rna[2]){
+						switch(codon[2]){
 							case 'U':
 							case 'C':
 								protein_sequence+="C";
@@ -124,7 +127,7 @@ void DNA::translate(){
 				break;
 				
 				case 'C':
-				switch(rna[1]){
+				switch(codon[1]){
 					case 'U':
 						protein_sequence+="L";
 						break;
@@ -132,7 +135,7 @@ void DNA::translate(){
 						protein_sequence+="P";
 						break;
 					case 'A':
-						switch(rna[2]){
+						switch(codon[2]){
 							case 'U':
 							case 'C':
 								protein_sequence+="H";
@@ -150,9 +153,9 @@ void DNA::translate(){
 				break;
 				
 				case 'A':
-				switch(rna[1]){
+				switch(codon[1]){
 					case 'U':
-						switch(rna[2]){
+						switch(codon[2]){
 							case 'U':
 							case 'C':
 							case 'A':
@@ -167,7 +170,7 @@ void DNA::translate(){
 						protein_sequence+="T";
 						break;
 					case 'A':
-						switch(rna[2]){
+						switch(codon[2]){
 							case 'U':
 							case 'C':
 								protein_sequence+="N";
@@ -179,7 +182,7 @@ void DNA::translate(){
 						}
 						break;
 					case 'G':
-						switch(rna[2]){
+						switch(codon[2]){
 							case 'U':
 							case 'C':
 								protein_sequence+="S";
@@ -194,7 +197,7 @@ void DNA::translate(){
 				break;
 				
 				case 'G':
-				switch(rna[1]){
+				switch(codon[1]){
 					case 'U':
 						protein_sequence+="V";
 						break;
@@ -202,7 +205,7 @@ void DNA::translate(){
 						protein_sequence+="A";
 						break;
 					case 'A':
-						switch(rna[2]){
+						switch(codon[2]){
 							case 'U':
 							case 'C':
 								protein_sequence+="D";
@@ -224,11 +227,12 @@ void DNA::translate(){
 
 //Hamming distance between two equal strings
 int hamming(DNA const &dna_1, DNA const &dna_2){
+	if(dna_1.dna_string.length()!=dna_2.dna_string.length()){
+		return -1;				//to indicate unequal strings
+	}
 	int distance = 0;
 	for(int i=0;i<dna_1.dna_string.length();i++){
 		if(dna_1.dna_string[i] != dna_2.dna_string[i])	distance++;
 	}
 	return distance;
 }
-
-/*Copyrights reserved*/
