@@ -2,12 +2,13 @@
 A Universal Bio-Informatics Tool for solving totally everyday problems.
 
 ## Goals
-- [x] Perform Global Alignment
+- [] Perform Global Alignment
 - [x] Perform Local Alignment
 - [x] Transcribe complementary DNA
 - [x] Transcribe mRNA sequence from complementary DNA
 - [x] Finally generate the Protein Sequence
 - [x] Calculate the Hamming Distance
+- [x] Calculate the Levenshtein Distance
 - [ ] Devise the possible k-mers from the given DNA Sequence
 - [x] % Mass composition of nucleotides in DNA
 - [x] % Mass composition of Amino Acid in generated Protein Sequence
