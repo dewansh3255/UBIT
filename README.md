@@ -2,7 +2,7 @@
 A Universal Bio-Informatics Tool for solving totally everyday problems.
 
 ## Goals
-- [] Perform Global Alignment
+- [ ] Perform Global Alignment
 - [x] Perform Local Alignment
 - [x] Transcribe complementary DNA
 - [x] Transcribe mRNA sequence from complementary DNA
