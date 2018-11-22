@@ -11,7 +11,7 @@ A Universal Bio-Informatics Tool for solving totally everyday problems.
 - [x] Calculate the Levenshtein Distance
 - [ ] Devise the possible k-mers from the given DNA Sequence
 - [x] % Mass composition of nucleotides in DNA
-- [x] % Mass composition of Amino Acid in generated Protein Sequence
+- [ ] % Mass composition of Amino Acid in generated Protein Sequence
 - [ ] Create a Neural Network to compare and the closest matching Protein Sequence with existing database
 - [ ] All the above presented in Enhanced Graphical Interface
 
