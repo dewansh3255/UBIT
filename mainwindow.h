@@ -15,8 +15,12 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void changeBackground(QMovie* background);
+
 private:
     Ui::MainWindow *ui;
+    QMovie* background;
 };
 
 #endif // MAINWINDOW_H
