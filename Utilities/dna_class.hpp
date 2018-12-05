@@ -236,3 +236,37 @@ int hamming(DNA const &dna_1, DNA const &dna_2){
 	}
 	return distance;
 }
+//Levenshtein distance between two strings
+int edit_dist(string const &s1, string const &s2){
+	int a = s1.length() + 1;
+    int b = s2.length() + 1;
+    
+    int *ptr = new int[a * b];
+	fill(ptr, ptr + (a * b), 0);
+
+    for(int i = 1, x = 0; i < b; ++i, ++x){
+        for(int j = 1, y = 0; j < a; ++j, ++y){
+        	if(s1[y] == s2[x]){
+        		ptr[ (i * a) + j ] = ptr[ ((i - 1) * a) + (j - 1)];
+      	  }
+       		else{
+        		ptr[ (i * a) + j ] = min( ptr[ (i-1) * a + j ] + 1,
+					min( ptr[i * a + (j - 1)] + 1, ptr[ (i - 1) * a + (j - 1)] + 1 )
+				);
+        	}
+    	}
+   	}
+   	
+   	//Matrix Display Part 
+   	/*
+   	for(int i = 0; i < b; ++i){
+    	for(int j = 0; j < a; ++j){
+        	cout<<ptr[(i*a)+j]<<" ";
+        }
+      	cout<<endl;
+   	}
+	*/
+   	int out= ptr[a*b-1];
+   	delete [] ptr;
+    return out;
+}
