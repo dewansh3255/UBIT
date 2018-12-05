@@ -40,9 +40,14 @@ Matrix::Matrix(int numRows, int numCols, bool isRandom){
 }
 
 double Matrix::randomNumber(){
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<> dis(-.0001, .0001);
+	return dis(gen);
+	/*
 	static std::mt19937 gen(chrono::high_resolution_clock::now().time_since_epoch().count());
 	std::uniform_real_distribution<> dis(-0.0001, 0.0001);
-	return dis(gen);
+	return dis(gen);*/
 }
 
 void Matrix::printToConsole(){
