@@ -1,11 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+//QT Files
 #include <QMainWindow>
-#include <QtWidgets>
-#include <QLayout>
 
+//Custom
+#include "screenmanager.h"
 
+//Debug
 #include <QDebug>
 namespace Ui {
 class MainWindow;
@@ -19,20 +21,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    //GUI
-
-    //Widgets
-    void addUiElements(QWidget* widget, QGroupBox *group);
-    //Background
-    void setBackground(QString path);
-
 private:
     Ui::MainWindow *ui;
-    QLayout* mainLayout;
-    //Background
-    QMovie* gif;
-    QLabel* gif_label;
-    QString background;
+    ScreenManager *screenManager;
 };
 
 #endif // MAINWINDOW_H
