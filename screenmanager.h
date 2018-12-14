@@ -2,28 +2,24 @@
 #define SCREENMANAGER_H
 
 //QT Classes
-#include <QtWidgets>
 #include <QLayout>
 
+//Custom Classes
+#include "loadstate.h"
 
 class ScreenManager
 {
 public:
-    ScreenManager();
+    ScreenManager(QWidget* window);
     ~ScreenManager();
-    //Widgets
-    void addUiElements(QWidget* widget, QGroupBox *group);
-    //Background
-    void setBackground(QString path, QWidget* window);
+    void loadScreen(LoadState* loadState, int time);
 
 private:
     //Main Window
+    QWidget* window;
+    //Layout & States
     QLayout* mainLayout;
-    //Background
-    QMovie* gif;
-    QLabel* gif_label;
-    QString background;
-
+    LoadState* loadState;
 };
 
 #endif // SCREENMANAGER_H

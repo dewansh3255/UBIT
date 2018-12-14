@@ -14,10 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     //Initial Setup
     ui->setupUi(this);
-    screenManager = new ScreenManager();
-    screenManager->setBackground(":/res/img/blue_circle.gif", this);
-    //Once app is loaded
-    //loadScene(mainLayout);
+    screenManager = new ScreenManager(this);
 }
 
 MainWindow::~MainWindow()

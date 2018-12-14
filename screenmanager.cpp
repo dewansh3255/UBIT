@@ -1,46 +1,22 @@
 #include "screenmanager.h"
 
-ScreenManager::ScreenManager()
+
+ScreenManager::ScreenManager(QWidget* window)
 {
-    gif = nullptr;
+    this->window = window;
     mainLayout = new QGridLayout;
+    //Generate a random loading time for loading screen
+    quint32 time = QRandomGenerator::global()->generate();
+    loadScreen(loadState, static_cast<int>(time));
 }
 
 ScreenManager::~ScreenManager()
 {
-    if (gif) {
-        delete gif;
-        delete gif_label;
-    }
     delete mainLayout;
 }
 
-void ScreenManager::setBackground(QString path, QWidget* window)
+void ScreenManager::loadScreen(LoadState *loadState, int time)
 {
-    //For gif file
-    if (path[path.size()-1] == "f") {
-        if (this->gif == nullptr) {
-            this->gif = new QMovie(path);
-            this->gif_label = new QLabel(window);
-            gif_label->resize(window->width(), window->height());
-        }
-        else
-            this->gif->setFileName(path);
-        gif_label->setMovie(gif);
-        gif->start();
-    } else {
-        //If background is already a gif
-        if (this->gif) {
-            delete gif;
-            delete gif_label;
-            gif = nullptr;
-        }
-        //Code for image background
-        QPixmap background(path);
-        background = background.scaled(window->size(), Qt::IgnoreAspectRatio);
-        QPalette palette;
-        palette.setBrush(QPalette::Background, background);
-        window->setPalette(palette);
-    }
-}
+    loadState = new LoadState(window);
 
+}
