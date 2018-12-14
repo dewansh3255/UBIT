@@ -2,7 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtWidgets>
+#include <QLayout>
 
+
+#include <QDebug>
 namespace Ui {
 class MainWindow;
 }
@@ -15,12 +19,20 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:
-    void changeBackground(QMovie* background);
+    //GUI
+
+    //Widgets
+    void addUiElements(QWidget* widget, QGroupBox *group);
+    //Background
+    void setBackground(QString path);
 
 private:
     Ui::MainWindow *ui;
-    QMovie* background;
+    QLayout* mainLayout;
+    //Background
+    QMovie* gif;
+    QLabel* gif_label;
+    QString background;
 };
 
 #endif // MAINWINDOW_H
