@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+//ALWAYS PULL BEFORE STARTING
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -8,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     gif = nullptr;
     mainLayout = new QGridLayout;
-    setBackground("E:/FAST/Semester 3/DS/Project/blue_circle.gif");
+    setBackground(":/res/img/blue_circle.gif");
 
 }
 
