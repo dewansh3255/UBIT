@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/res">
         <file>img/blue_circle.gif</file>
+        <file>img/multi_dna.gif</file>
     </qresource>
 </RCC>

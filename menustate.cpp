@@ -1,8 +1,8 @@
-#include "loadstate.h"
+#include "menustate.h"
 
-LoadState::LoadState(QMainWindow* window):State(window)
+MenuState::MenuState(QMainWindow *window):State(window)
 {
-    QString background_path = ":/res/img/blue_circle.gif";
+    QString background_path = ":/res/img/multi_dna.gif";
     //Loading GIF background
     if (this->gif == nullptr) {
         this->gif = new QMovie(background_path);

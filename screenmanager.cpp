@@ -1,13 +1,13 @@
 #include "screenmanager.h"
 
 
-ScreenManager::ScreenManager(QWidget* window)
+ScreenManager::ScreenManager(QMainWindow* window)
 {
     this->window = window;
     mainLayout = new QGridLayout;
     //Generate a random loading time for loading screen
     quint32 time = QRandomGenerator::global()->generate();
-    loadScreen(loadState, static_cast<int>(time));
+    loadScreen(currentState, static_cast<int>(time));
 }
 
 ScreenManager::~ScreenManager()
@@ -15,8 +15,16 @@ ScreenManager::~ScreenManager()
     delete mainLayout;
 }
 
-void ScreenManager::loadScreen(LoadState *loadState, int time)
+void ScreenManager::loadScreen(State *state, int time)
 {
-    loadState = new LoadState(window);
-
+    state = new MenuState(window);
+    state->addLayout(mainLayout);
+    QPushButton* button = new QPushButton(window);
+    state->addWidget(button);
+    QPalette pal = button->palette();
+    button = state->getWidget(0);
+    pal.setColor(QPalette::Button, QColor(Qt::blue));
+    button->setAutoFillBackground(true);
+    button->setPalette(pal);
+    button->update();
 }

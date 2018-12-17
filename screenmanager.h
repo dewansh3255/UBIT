@@ -6,20 +6,21 @@
 
 //Custom Classes
 #include "loadstate.h"
+#include "menustate.h"
 
 class ScreenManager
 {
 public:
-    ScreenManager(QWidget* window);
+    ScreenManager(QMainWindow* window);
     ~ScreenManager();
-    void loadScreen(LoadState* loadState, int time);
+    void loadScreen(State* state, int time);
 
 private:
     //Main Window
-    QWidget* window;
+    QMainWindow* window;
     //Layout & States
     QLayout* mainLayout;
-    LoadState* loadState;
+    State* currentState;
 };
 
 #endif // SCREENMANAGER_H

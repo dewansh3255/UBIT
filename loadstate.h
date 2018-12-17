@@ -6,7 +6,7 @@
 class LoadState : public State
 {
 public:
-    LoadState(QWidget* window);
+    LoadState(QMainWindow* window);
 };
 
 #endif // LOADSTATE_H

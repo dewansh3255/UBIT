@@ -29,13 +29,15 @@ SOURCES += \
         mainwindow.cpp \
     screenmanager.cpp \
     state.cpp \
-    loadstate.cpp
+    loadstate.cpp \
+    menustate.cpp
 
 HEADERS += \
         mainwindow.h \
     screenmanager.h \
     state.h \
-    loadstate.h
+    loadstate.h \
+    menustate.h
 
 FORMS += \
         mainwindow.ui

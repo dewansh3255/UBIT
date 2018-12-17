@@ -8,15 +8,20 @@
 class State
 {
 public:
-    State(QWidget* window);
-    ~State();
+    State(QMainWindow* window);
+    virtual ~State();
     //Widgets
-    void addUiElements(QWidget* widget, QGroupBox *group);
+    void addLayout(QLayout* layout);
+    void addWidget(QWidget* widget);
+    QWidget* getWidget(int index);
 protected:
-    QWidget* window;
+    QMainWindow* window;
     //Background
     QMovie* gif;
     QLabel* gif_handler;
+    //UI
+    QLayout* layout;
+    QVector <QWidget*> widgets;
 };
 
 #endif // STATE_H
