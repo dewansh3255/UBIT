@@ -10,6 +10,7 @@ class State
 public:
     State(QMainWindow* window);
     virtual ~State();
+    virtual void resize(QResizeEvent* e) = 0;
     //Widgets
     void addLayout(QLayout* layout);
     void addWidget(QWidget* widget);

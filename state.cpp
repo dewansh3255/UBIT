@@ -39,4 +39,3 @@ QWidget *State::getWidget(int index)
     }
     return widgets[index];
 }
-

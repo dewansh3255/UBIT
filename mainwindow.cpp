@@ -14,11 +14,20 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     //Initial Setup
     ui->setupUi(this);
+    resize(600, 600);
     screenManager = new ScreenManager(this);
 }
+
+
 
 MainWindow::~MainWindow()
 {
     delete ui;
     delete screenManager;
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    screenManager->resize(event);
+    QWidget::resizeEvent(event);
 }

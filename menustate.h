@@ -6,7 +6,13 @@
 class MenuState : public State
 {
 public:
-    MenuState(QMainWindow* window);
+    MenuState(QMainWindow* window, QString page);
+    ~MenuState();
+    void resize(QResizeEvent* e);
+
+private:
+    QPixmap* background;
+    QPalette* palette;
 };
 
 #endif // MENUSTATE_H

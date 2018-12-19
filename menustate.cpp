@@ -1,16 +1,21 @@
 #include "menustate.h"
 
-MenuState::MenuState(QMainWindow *window):State(window)
+MenuState::MenuState(QMainWindow *window, QString page):State(window)
 {
-    QString background_path = ":/res/img/multi_dna.gif";
-    //Loading GIF background
-    if (this->gif == nullptr) {
-        this->gif = new QMovie(background_path);
-        this->gif_handler = new QLabel(window);
-        gif_handler->resize(window->width(), window->height());
-    }
-    else
-        this->gif->setFileName(background_path);
-    gif_handler->setMovie(gif);
-    gif->start();
+    background = new QPixmap(":/res/img/"+page+".jpg");
+    *background = background->scaled(window->size(), Qt::IgnoreAspectRatio);
+    palette = new QPalette;
+    palette->setBrush(QPalette::Background, *background);
+    window->setPalette(*palette);
+}
+
+MenuState::~MenuState() {
+    delete background;
+    delete palette;
+}
+
+void MenuState::resize(QResizeEvent* e) {
+    *background = background->scaled(e->size(), Qt::IgnoreAspectRatio);
+    palette->setBrush(QPalette::Background, *background);
+    window->setPalette(*palette);
 }
