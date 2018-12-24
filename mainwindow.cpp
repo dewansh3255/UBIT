@@ -28,6 +28,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
-    screenManager->resize(event);
+    if (screenManager)
+        screenManager->resize();
     QWidget::resizeEvent(event);
 }

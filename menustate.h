@@ -8,7 +8,7 @@ class MenuState : public State
 public:
     MenuState(QMainWindow* window, QString page);
     ~MenuState();
-    void resize(QResizeEvent* e);
+    void resize();
 
 private:
     QPixmap* background;

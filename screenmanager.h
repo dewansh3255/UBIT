@@ -13,8 +13,8 @@ class ScreenManager
 public:
     ScreenManager(QMainWindow* window);
     ~ScreenManager();
-    void resize(QResizeEvent* e);
-    void loadScreen(State* state, int time);
+    void resize();
+    void loadScreen(State **state, int time);
 
 private:
     //Main Window

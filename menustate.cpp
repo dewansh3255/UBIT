@@ -2,7 +2,8 @@
 
 MenuState::MenuState(QMainWindow *window, QString page):State(window)
 {
-    background = new QPixmap(":/res/img/"+page+".jpg");
+    url = ":/res/img/"+page+".jpg";
+    background = new QPixmap(url);
     *background = background->scaled(window->size(), Qt::IgnoreAspectRatio);
     palette = new QPalette;
     palette->setBrush(QPalette::Background, *background);
@@ -14,8 +15,11 @@ MenuState::~MenuState() {
     delete palette;
 }
 
-void MenuState::resize(QResizeEvent* e) {
-    *background = background->scaled(e->size(), Qt::IgnoreAspectRatio);
+void MenuState::resize() {
+    if (background)
+        delete background;
+    background = new QPixmap(url);
+    *background = background->scaled(window->size(), Qt::IgnoreAspectRatio);
     palette->setBrush(QPalette::Background, *background);
     window->setPalette(*palette);
 }

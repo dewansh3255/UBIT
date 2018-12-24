@@ -10,7 +10,7 @@ class State
 public:
     State(QMainWindow* window);
     virtual ~State();
-    virtual void resize(QResizeEvent* e) = 0;
+    virtual void resize() = 0;
     //Widgets
     void addLayout(QLayout* layout);
     void addWidget(QWidget* widget);
@@ -20,6 +20,7 @@ protected:
     //Background
     QMovie* gif;
     QLabel* gif_handler;
+    QString url;
     //UI
     QLayout* layout;
     QVector <QWidget*> widgets;

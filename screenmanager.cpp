@@ -7,25 +7,29 @@ ScreenManager::ScreenManager(QMainWindow* window)
     mainLayout = new QGridLayout;
     //Generate a random loading time for loading screen
     quint32 time = QRandomGenerator::global()->generate();
-    loadScreen(currentState, static_cast<int>(time));
+    loadScreen(&currentState, static_cast<int>(time));
 }
 
 ScreenManager::~ScreenManager()
 {
-    delete mainLayout;
+    if (currentState)
+        delete currentState;
+    if (mainLayout)
+        delete mainLayout;
 }
 
-void ScreenManager::resize(QResizeEvent *e)
+void ScreenManager::resize()
 {
-    currentState->resize(e);
+    if(currentState)
+        currentState->resize();
 }
 
-void ScreenManager::loadScreen(State *state, int time)
+void ScreenManager::loadScreen(State **state, int time)
 {
-    state = new MenuState(window,"home");
-    state->addLayout(mainLayout);
+    *state = new LoadState(window,"multi_dna");
+    (*state)->addLayout(mainLayout);
     QPushButton* button = new QPushButton(window);
-    state->addWidget(button);
+    (*state)->addWidget(button);
     QPalette pal = button->palette();
     pal.setColor(QPalette::Button, QColor(Qt::blue));
     button->setAutoFillBackground(true);

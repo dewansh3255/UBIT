@@ -7,6 +7,8 @@ class LoadState : public State
 {
 public:
     LoadState(QMainWindow* window, QString shape);
+    ~LoadState();
+    void resize();
 };
 
 #endif // LOADSTATE_H
