@@ -31,6 +31,7 @@ private:
     State* currentState;
     //All screens
     QVector <State*> states;
+
 };
 
 #endif // STATEMANAGER_H

@@ -8,8 +8,10 @@ State::State(QMainWindow* window)
 
 State::~State()
 {
-    for (int i = 0; i < widgets.size(); i++)
+    for (int i = 0; i < widgets.size(); i++) {
         delete widgets[i];
+        widgets[i] = nullptr;
+    }
 }
 
 void State::addLayout(QLayout *layout)

@@ -31,8 +31,7 @@ SOURCES += \
     loadstate.cpp \
     menustate.cpp \
     menubutton.cpp \
-    statemanager.cpp \
-    textbox.cpp
+    statemanager.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,8 +39,7 @@ HEADERS += \
     loadstate.h \
     menustate.h \
     menubutton.h \
-    statemanager.h \
-    textbox.h
+    statemanager.h
 
 FORMS += \
         mainwindow.ui

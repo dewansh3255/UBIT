@@ -27,6 +27,8 @@ StateManager::StateManager(QMainWindow *window) : QObject(window)
         states[i]->addLayout(mainLayout);
 
     //WIDGETS
+
+
     //Menu Tree Widgets
     int menu = 0;
     //Home
@@ -49,10 +51,13 @@ StateManager::StateManager(QMainWindow *window) : QObject(window)
         //Local
         int local = alignment+1;
         states[local]->addWidget(new QLabel("Local Input", window));
+
         states[local]->addWidget(new MenuButton(window, states[alignment], "Back"));
     states[alignment]->addWidget(new MenuButton(window, states[alignment+2], "Global Alignment")); //Global Alignment
         //Global
         int global = alignment+2;
+        states[global]->addWidget(new QLabel("Global Input", window));
+
         states[global]->addWidget(new MenuButton(window, states[alignment], "Back"));
     states[alignment]->addWidget(new MenuButton(window, states[utility], "Back"));
     //Non Alignment
