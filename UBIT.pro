@@ -27,17 +27,19 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    screenmanager.cpp \
     state.cpp \
     loadstate.cpp \
-    menustate.cpp
+    menustate.cpp \
+    menubutton.cpp \
+    statemanager.cpp
 
 HEADERS += \
         mainwindow.h \
-    screenmanager.h \
     state.h \
     loadstate.h \
-    menustate.h
+    menustate.h \
+    menubutton.h \
+    statemanager.h
 
 FORMS += \
         mainwindow.ui

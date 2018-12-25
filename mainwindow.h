@@ -5,7 +5,7 @@
 #include <QMainWindow>
 
 //Custom
-#include "screenmanager.h"
+#include "statemanager.h"
 
 //Debug
 #include <QDebug>
@@ -24,7 +24,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    ScreenManager *screenManager;
+    StateManager *stateManager;
 };
 
 #endif // MAINWINDOW_H

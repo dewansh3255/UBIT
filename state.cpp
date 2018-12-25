@@ -3,16 +3,13 @@
 State::State(QMainWindow* window)
 {
     this->window = window;
-    this->gif = nullptr;
     this->layout = nullptr;
 }
 
 State::~State()
 {
-    if (gif) {
-        delete gif;
-        delete gif_handler;
-    }
+    for (int i = 0; i < widgets.size(); i++)
+        delete widgets[i];
 }
 
 void State::addLayout(QLayout *layout)
@@ -28,7 +25,7 @@ void State::addWidget(QWidget *widget)
         return;
     }
     this->widgets.push_back(widget);
-    this->layout->addWidget(widget);
+    widget->hide();
 }
 
 QWidget *State::getWidget(int index)

@@ -9,7 +9,8 @@ public:
     MenuState(QMainWindow* window, QString page);
     ~MenuState();
     void resize();
-
+    void show();
+    void hide();
 private:
     QPixmap* background;
     QPalette* palette;

@@ -9,6 +9,8 @@ public:
     LoadState(QMainWindow* window, QString shape);
     ~LoadState();
     void resize();
+    void show();
+    void hide();
 };
 
 #endif // LOADSTATE_H
