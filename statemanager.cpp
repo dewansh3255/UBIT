@@ -3,12 +3,12 @@
 StateManager::StateManager(QMainWindow *window) : QObject(window)
 {
     currentState = nullptr;
+    timer = new QTimer(this);;
     this->window = window;
-    mainLayout = new QGridLayout;
-    //Generate a random loading time for loading screen
-    //quint32 time = QRandomGenerator::global()->generate();
+    mainLayout = new QFormLayout(window);
 
     //All Screens in Tree Form
+    states.push_back(new LoadState(window, "blue_circle"));
     states.push_back(new MenuState(window, "home")); //Home
         states.push_back(new MenuState(window, "home")); //Utility Tools
             states.push_back(new MenuState(window, "home")); //Alignment Matching
@@ -30,7 +30,7 @@ StateManager::StateManager(QMainWindow *window) : QObject(window)
 
 
     //Menu Tree Widgets
-    int menu = 0;
+    int menu = 1;
     //Home
     states[menu]->addWidget(new QLabel("UBIT", window));
     states[menu]->addWidget(new MenuButton(window, states[menu+1], "Utility Tools"));
@@ -51,7 +51,7 @@ StateManager::StateManager(QMainWindow *window) : QObject(window)
         //Local
         int local = alignment+1;
         states[local]->addWidget(new QLabel("Local Input", window));
-
+        states[local]->addWidget(new TextInput(window));
         states[local]->addWidget(new MenuButton(window, states[alignment], "Back"));
     states[alignment]->addWidget(new MenuButton(window, states[alignment+2], "Global Alignment")); //Global Alignment
         //Global
@@ -90,7 +90,6 @@ StateManager::StateManager(QMainWindow *window) : QObject(window)
     //Load the first screen
     loadScreen(states[0]);
 
-
     //For all buttons
     for (int i = 0; i < states.size(); i++)
         for (int j = 0; j < states[i]->widgets.size(); j++)
@@ -105,15 +104,23 @@ StateManager::~StateManager()
         delete states[i];
     if (mainLayout)
         delete mainLayout;
+    delete timer;
 }
 
 void StateManager::resize()
 {
-//    if(currentState)
-//        currentState->resize();
+    if(currentState)
+        currentState->resize();
 }
 
-void StateManager::loadScreen(State *state)
+void StateManager::loadScreen(State *state) {
+    if (dynamic_cast<MenuState*>(state))
+        loadScreen(dynamic_cast<MenuState*>(state));
+    else if (dynamic_cast<LoadState*>(state))
+        loadScreen(dynamic_cast<LoadState*>(state));
+}
+
+void StateManager::loadScreen(MenuState *state)
 {
     if (currentState) {
         qDebug("Hiding Old Screen");
@@ -123,4 +130,34 @@ void StateManager::loadScreen(State *state)
     qDebug()<<"Showing new menu with "<<state->widgets.size()<<" widgets.";
     currentState = state;
     state->show();
+}
+
+void StateManager::loadScreen(LoadState *state)
+{
+    if (currentState) {
+        qDebug("Hiding Old Screen");
+        currentState->hide();
+        qDebug("Old Screen Hidden");
+    }
+    qDebug()<<"Showing new menu with "<<state->widgets.size()<<" widgets.";
+    currentState = state;
+    state->show();
+    QTime time = QTime::currentTime();
+    qsrand(static_cast<uint>(time.msec()));
+    connect(timer, SIGNAL(timeout()), this, SLOT(nextMenu()));
+    timer->setSingleShot(true); // if you only want it to fire once
+    timer->start(randInt(1000, 2000));
+}
+
+
+int StateManager::randInt(int low, int high)
+{
+    // Random number between low and high
+    int num = qrand() % ((high + 1) - low) + low;
+    return num;
+}
+
+void StateManager::nextMenu()
+{
+    loadScreen(states[1]);
 }

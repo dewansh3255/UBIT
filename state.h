@@ -3,7 +3,7 @@
 
 //QT Classes
 #include <QtWidgets>
-
+#include <textinput.h>
 
 class State
 {
@@ -16,6 +16,7 @@ public:
     //Widgets
     void addLayout(QLayout* layout);
     void addWidget(QWidget* widget);
+    void addWidget(TextInput* textInput);
     QWidget* getWidget(int index);
     friend class StateManager;
 

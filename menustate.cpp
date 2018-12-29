@@ -44,6 +44,4 @@ void MenuState::hide() {
         widgets[i]->hide();
         this->layout->removeWidget(widgets[i]);
     }
-    //Hiding Background
-
 }

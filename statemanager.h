@@ -9,6 +9,7 @@
 #include "loadstate.h"
 #include "menustate.h"
 #include "menubutton.h"
+#include "textinput.h"
 
 class StateManager : public QObject
 {
@@ -16,14 +17,18 @@ class StateManager : public QObject
 public:
     explicit StateManager(QMainWindow* window = nullptr);
     ~StateManager();
+    int randInt(int low, int high);
 signals:
 
 
 public slots:
     void loadScreen(State *state);
-    void resize();
+    void resize();    
+    void nextMenu();
 
 private:
+    void loadScreen(MenuState *state);
+    void loadScreen(LoadState *state);
     //Main Window
     QMainWindow* window;
     //Layout
@@ -32,6 +37,7 @@ private:
     //All screens
     QVector <State*> states;
 
+    QTimer *timer;
 };
 
 #endif // STATEMANAGER_H

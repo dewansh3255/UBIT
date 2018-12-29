@@ -30,6 +30,19 @@ void State::addWidget(QWidget *widget)
     widget->hide();
 }
 
+void State::addWidget(TextInput *textInput)
+{
+    if (!layout) {
+        qDebug()<<"Error: Layout not found!"<<endl;
+        return;
+    }
+    this->widgets.push_back(textInput->pushButton);
+    this->widgets.push_back(textInput->textEdit);
+    textInput->pushButton->hide();
+    textInput->textEdit->hide();
+}
+
+
 QWidget *State::getWidget(int index)
 {
     if (index > widgets.size()-1) {

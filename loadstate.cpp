@@ -2,10 +2,10 @@
 
 LoadState::LoadState(QMainWindow* window, QString shape):State(window)
 {
-    this->gif = nullptr;
-    this->gif_handler = nullptr;
-    this->window = window;
     url = ":/res/img/"+shape+".gif";
+    this->gif = new QMovie(url);
+    this->gif_handler = new QLabel(window);
+    this->window = window;
 }
 
 LoadState::~LoadState() {
@@ -21,11 +21,9 @@ void LoadState::resize() {
 
 void LoadState::show() {
     //Loading GIF only once
-    if (!this->gif) {
-        this->gif = new QMovie(url);
-        this->gif_handler = new QLabel(window);
-        gif_handler->resize(window->width(), window->height());
-    }
+    this->layout->removeWidget(gif_handler);
+    gif_handler->show();
+    gif_handler->resize(window->width(), window->height());
     gif_handler->setMovie(gif);
     gif->setScaledSize(window->size());
     gif->start();
@@ -40,7 +38,7 @@ void LoadState::hide() {
     qDebug("Hiding Load Screen");
     //Stopping GIF background
     gif->stop();
-    gif_handler->setMovie(nullptr);
+    gif_handler->hide();
     layout->removeWidget(gif_handler);
     //Hiding Widgets
     for (int i = 0; i < widgets.size(); i++) {
