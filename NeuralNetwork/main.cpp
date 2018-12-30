@@ -34,6 +34,7 @@ main(){
 	vector<int> topology;
 	topology.push_back(17);
 	topology.push_back(6);
+	topology.push_back(8);
 	topology.push_back(2);
 	
 	NeuralNetwork *n = new NeuralNetwork(topology, 2, 3, 1, 1, 0.05, 1);
