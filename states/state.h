@@ -3,7 +3,11 @@
 
 //QT Classes
 #include <QtWidgets>
-#include <textinput.h>
+
+//Custom Classes
+#include "custom_widgets/textinput.h"
+//Processes
+#include "non_align/levenshtein.h"
 
 class State : public QObject
 {
@@ -11,7 +15,7 @@ class State : public QObject
 public:
     State(QMainWindow* window);
     virtual ~State();
-    virtual void resize() = 0; //REIMPLEMENT THIS USING QOBJECT
+    virtual void resize() = 0;
     virtual void show() = 0;
     virtual void hide() = 0;
     //Widgets
@@ -20,10 +24,13 @@ public:
     void addWidget(TextInput* textInput);
     QWidget* getWidget(int index);
 
+    friend class StateManager;
+
+public slots:
+
     //Processing Functions
     void levenshtein(QVector <QString> inputs);
 
-    friend class StateManager;
 
 protected:
     QMainWindow* window;

@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     //Initial Setup
     ui->setupUi(this);
-    resize(400, 500);
+    resize(600, 500);
     stateManager = new StateManager(this);
 }
 

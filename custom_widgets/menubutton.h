@@ -3,7 +3,7 @@
 
 #include <QWidget>
 
-#include "state.h"
+#include "states/state.h"
 
 class MenuButton : public QPushButton
 {

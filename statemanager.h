@@ -6,11 +6,11 @@
 #include <QLayout>
 
 //Custom Classes
-#include "loadstate.h"
-#include "menustate.h"
-#include "menubutton.h"
-#include "textinput.h"
-#include "processbutton.h"
+#include "states/loadstate.h"
+#include "states/menustate.h"
+#include "custom_widgets/menubutton.h"
+#include "custom_widgets/textinput.h"
+#include "custom_widgets/processbutton.h"
 
 class StateManager : public QObject
 {
@@ -30,6 +30,7 @@ public slots:
 private:
     void removeScreen();
     QVector <QPlainTextEdit*> getInputs(State* state);
+    void stylize(QWidget* widget);
     //Main Window
     QMainWindow* window;
     //Layout
@@ -39,7 +40,8 @@ private:
     //All screens
     QVector <State*> states;
 
-    QTimer *timer;
+    //Timer
+    QTimer* timer;
 };
 
 #endif // STATEMANAGER_H

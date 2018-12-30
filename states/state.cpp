@@ -36,8 +36,8 @@ void State::addWidget(TextInput *textInput)
         qDebug()<<"Error: Layout not found!"<<endl;
         return;
     }
-    this->widgets.push_back(textInput->pushButton);
     this->widgets.push_back(textInput->textEdit);
+    this->widgets.push_back(textInput->pushButton);
     textInput->pushButton->hide();
     textInput->textEdit->hide();
 }
@@ -52,9 +52,26 @@ QWidget *State::getWidget(int index)
     return widgets[index];
 }
 
-
 //Processes
 void State::levenshtein(QVector<QString> inputs)
 {
+    Levenshtein levenshtein(inputs, window);
+    int i = 0;
+    //Matrix
+    while (i < widgets.size()) {
+        if (dynamic_cast<QPlainTextEdit*>(widgets[i])) {
+            dynamic_cast<QPlainTextEdit*>(widgets[i++])->setPlainText(levenshtein.matrix);
+            break;
+        }
+        i++;
+    }
+    //Distance
+    while (i < widgets.size()) {
+        if (dynamic_cast<QPlainTextEdit*>(widgets[i])) {
+            dynamic_cast<QPlainTextEdit*>(widgets[i])->setPlainText(levenshtein.distance);
+            break;
+        }
+        i++;
+    }
 
 }

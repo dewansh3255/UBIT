@@ -27,25 +27,25 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    state.cpp \
-    loadstate.cpp \
-    menustate.cpp \
-    menubutton.cpp \
+    states/state.cpp \
+    states/loadstate.cpp \
+    states/menustate.cpp \
+    custom_widgets/menubutton.cpp \
     statemanager.cpp \
-    textinput.cpp \
-    processbutton.cpp \
-    levenshtein.cpp
+    custom_widgets/textinput.cpp \
+    custom_widgets/processbutton.cpp \
+    non_align/levenshtein.cpp
 
 HEADERS += \
         mainwindow.h \
-    state.h \
-    loadstate.h \
-    menustate.h \
-    menubutton.h \
+    states/state.h \
+    states/loadstate.h \
+    states/menustate.h \
+    custom_widgets/menubutton.h \
     statemanager.h \
-    textinput.h \
-    processbutton.h \
-    levenshtein.h
+    custom_widgets/textinput.h \
+    custom_widgets/processbutton.h \
+    non_align/levenshtein.h
 
 FORMS += \
         mainwindow.ui
