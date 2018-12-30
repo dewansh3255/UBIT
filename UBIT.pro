@@ -32,7 +32,9 @@ SOURCES += \
     menustate.cpp \
     menubutton.cpp \
     statemanager.cpp \
-    textinput.cpp
+    textinput.cpp \
+    processbutton.cpp \
+    levenshtein.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +43,9 @@ HEADERS += \
     menustate.h \
     menubutton.h \
     statemanager.h \
-    textinput.h
+    textinput.h \
+    processbutton.h \
+    levenshtein.h
 
 FORMS += \
         mainwindow.ui

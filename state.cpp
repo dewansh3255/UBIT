@@ -1,6 +1,6 @@
 #include "state.h"
 
-State::State(QMainWindow* window)
+State::State(QMainWindow* window) : QObject(window)
 {
     this->window = window;
     this->layout = nullptr;
@@ -50,4 +50,11 @@ QWidget *State::getWidget(int index)
         return nullptr;
     }
     return widgets[index];
+}
+
+
+//Processes
+void State::levenshtein(QVector<QString> inputs)
+{
+
 }

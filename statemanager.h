@@ -10,6 +10,7 @@
 #include "menustate.h"
 #include "menubutton.h"
 #include "textinput.h"
+#include "processbutton.h"
 
 class StateManager : public QObject
 {
@@ -27,13 +28,14 @@ public slots:
     void nextMenu();
 
 private:
-    void loadScreen(MenuState *state);
-    void loadScreen(LoadState *state);
+    void removeScreen();
+    QVector <QPlainTextEdit*> getInputs(State* state);
     //Main Window
     QMainWindow* window;
     //Layout
     QLayout* mainLayout;
     State* currentState;
+    int currentStateNumber;
     //All screens
     QVector <State*> states;
 

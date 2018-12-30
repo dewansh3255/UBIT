@@ -5,8 +5,9 @@
 #include <QtWidgets>
 #include <textinput.h>
 
-class State
+class State : public QObject
 {
+    Q_OBJECT
 public:
     State(QMainWindow* window);
     virtual ~State();
@@ -18,6 +19,10 @@ public:
     void addWidget(QWidget* widget);
     void addWidget(TextInput* textInput);
     QWidget* getWidget(int index);
+
+    //Processing Functions
+    void levenshtein(QVector <QString> inputs);
+
     friend class StateManager;
 
 protected:

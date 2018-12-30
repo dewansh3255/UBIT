@@ -7,7 +7,6 @@ MenuButton::MenuButton(QWidget *parent, State* next, QString name) : QPushButton
 
 void MenuButton::mousePressEvent(QMouseEvent *e)
 {
-    qDebug("Menu Button Pressed");
     emit screenChanged(next);
 }
 

@@ -10,14 +10,16 @@ class TextInput : public QWidget
 public:
     explicit TextInput(QWidget *parent = nullptr);
     void show();
-    friend class State;
+
+    //Components
+    QPlainTextEdit *textEdit;
+    QPushButton *pushButton;
 signals:
 
 public slots:
 
+    void loadInput();
 private:
-    QTextEdit *textEdit;
-    QPushButton *pushButton;
 };
 
 #endif // TEXTINPUT_H
